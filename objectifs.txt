@@ -1,0 +1,72 @@
+Le but de ce projet est de créer une API REST permettant de créer et gérer 
+des utilisateurs ainsi que des produits:
+Etape 1: 
+Vous devez dans cette étape créer une base de données avec deux table :
+Users
+Products
+La table Users devra contenir les champs suivants :
+Id
+username
+password
+role
+email
+Adresse
+La table Products devra contenir les champs suivants :
+Id
+name
+price
+UserID
+Vous devrez réaliser un UML de votre base de données
+
+Etape 2:
+Dans cette étape vous devrez mettre en place
+la gestion de utilisateur, cette partie
+devra contenir les endpoints suivant :
+
+/register [Post] => (création d'un user)
+/login [Post] => renvoi un jwt token
+/me [Get] => ( récupérer les infos de l'utilisateur actuel )
+/users [Get] => ( récupérer tous les users )
+/user/ [Put] => ( modification d'un utilisateur )
+/user/ [Get] => ( récupérer les infos de l'utilisateur )
+/user/ [Delete] => ( suppréssion d'un utilisateur )
+Attention les routes suivante devrons être
+accessibles uniquement si l'utilisateur
+est connecté et que l'action concerne sont
+compte ou que l'utilisateur est connecté 
+et qu'il possède le rôle Admin :
+/me => (uniquement si l'utilisateur connecté )
+/user/ => si l'utilisateur est admin ou que l'action concerne son compte
+
+Etape 3:
+Dans cette étape vous devrez mettre en place
+la gestion des produits, cette partie devra
+contenir les endpoints suivant :
+
+/product/create [Post] => créer un produit et l'associe à l'utilisateur connecté
+/product/ [Get] => récupère les infos d'un produit
+/product/ [Put] => modifie les infos d'un produit
+/product/ [Delete] => supprime les infos d'un produit
+/products [Get] => récupère tous les produits existants
+/products/ [Get] => récupère tous les produits existants concernant un utilisateur
+toute les routes devrons obligé l'utilisateur
+à être connecté sauf pour les routes suivantes :
+/products
+/products/
+
+Bonus :
+Vous pourrez rajouter les routes que vous souhaitez.
+
+
+
+
+
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT primary key NOT NULL,
+  username  VARCHAR(150) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role  VARCHAR(150) NOT NULL,
+  email  VARCHAR(150) NOT NULL,
+  adresse  VARCHAR(150) NOT NULL
+);
